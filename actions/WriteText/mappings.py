@@ -20,7 +20,7 @@ class KeyMapper:
     def _setup_xkb(self):
       try:
           self.xkb_context = xkb.Context()
-          names = self.xkb_context.keymap_new_from_names("default", None, "us", None, None)
+          names = self.xkb_context.keymap_new_from_names("default", None, "us", None)
           if names is None:
             log.error(f"Failed to setup xkbcommon: keymap_new_from_names returned NULL")
             self.xkb_context = None
