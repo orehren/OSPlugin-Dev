@@ -29,7 +29,7 @@ class KeyMapper:
             self.xkb_keymap = None
             self.xkb_state = None
             
-        def map_char(self, char: str) -> List[int]:
+    def map_char(self, char: str) -> List[int]:
         if not self.xkb_state or not self.xkb_keymap:
              log.error("xkbcommon is not set up correctly.")
              return []
