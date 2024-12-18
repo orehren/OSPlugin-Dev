@@ -39,7 +39,7 @@ class KeyMapper:
             
         found_keycodes = []
         for keycode in self.xkb_keymap:
-            self.xkb_state.update_mask(keycode, 0,0,0,0)
+            self.xkb_state.update_mask(keycode, 0,0,0,0, self.layout)
             symbols = self.xkb_state.key_get_syms(keycode)
             if not symbols:
                  continue
