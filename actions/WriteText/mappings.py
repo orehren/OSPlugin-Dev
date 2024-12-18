@@ -20,7 +20,6 @@ class KeyMapper:
     def _setup_xkb(self):
         try:
             self.xkb_context = xkb.Context()
-            log.debug(f"Attributes of context: {dir(self.xkb_context)}")
             names = self.xkb_context.keymap_new_from_names("evdev", None, "us", None, None)
             if names is None:
               log.error(f"Failed to setup xkbcommon: keymap_new_from_names returned NULL")
@@ -28,8 +27,8 @@ class KeyMapper:
               self.xkb_keymap = None
               self.xkb_state = None
               return
-            keymap_str = xkb.Keymap.get_as_string(names)
-            self.xkb_keymap = self.xkb_context.get_as_string(keymap_str)
+            keymap_str = xkb.Keymap.get_as_string(names, xkb.KEYMAP_FORMAT_TEXT_V1)
+            self.xkb_keymap = self.xkb_context.keymap_from_string(keymap_str, xkb.KEYMAP_FORMAT_TEXT_V1, 1)
             self.xkb_state = xkb.State(self.xkb_keymap)
             self.layout = 0
             log.debug("xkbcommon setup successful")
