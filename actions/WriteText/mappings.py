@@ -56,6 +56,4 @@ class KeyMapper:
         keycodes.extend(found_keycodes)
 
         return keycodes
-        
-        keycodes.extend(found_keycodes)
-        return keycodes
+
