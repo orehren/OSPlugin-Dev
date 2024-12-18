@@ -20,9 +20,7 @@ class KeyMapper:
     def _setup_xkb(self):
         try:
             self.xkb_context = xkb.Context()
-            names = self.xkb_context.keymap_new_from_names("evdev", None, "us", None, None)
-            log.debug(f"Attributes of names: {dir(names)}")
-            log.debug(f"Names Layout Attribute: {dir(names.layout_index_get)}")
+            names = self.xkb_context.keymap_new_from_names("evdev", None, "us", None, None)            
             if names is None:
               log.error(f"Failed to setup xkbcommon: keymap_new_from_names returned NULL")
               self.xkb_context = None
