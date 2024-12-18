@@ -28,7 +28,7 @@ class KeyMapper:
               self.xkb_state = None
               return
             keymap_str = xkb.Keymap.get_as_string(names)
-            self.xkb_keymap = self.xkb_context.keymap_from_string(keymap_str)
+            self.xkb_keymap = self.xkb_context.get_as_string(keymap_str)
             self.xkb_state = xkb.State(self.xkb_keymap)
             self.layout = 0
             log.debug("xkbcommon setup successful")
