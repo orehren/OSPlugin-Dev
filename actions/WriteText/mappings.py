@@ -20,8 +20,9 @@ class KeyMapper:
     def _setup_xkb(self):
         try:
             self.xkb_context = xkb.Context()
-            self.xkb_keymap = self.xkb_context.keymap_new_from_names()
-            self.xkb_state = self.xkb_keymap.state_new()
+            self.xkb_keymap = self.xkb_context.keymap_new_from_names("default", None, None, None, xkb.KEYMAP_COMPILE_NO_FLAGS)
+            self.xkb_state = self.xkb_context.state_new(self.xkb_keymap)
+            self.layout = self.xkb_state.layout_index_get()
             log.debug("xkbcommon setup successful")
         except Exception as e:
             log.error(f"Failed to setup xkbcommon: {e}")
