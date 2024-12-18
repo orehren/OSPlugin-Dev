@@ -20,23 +20,22 @@ class KeyMapper:
     def _setup_xkb(self):
         try:
             self.xkb_context = xkb.Context()
-            self.names = self.xkb_context.keymap_new_from_names(None, None, "us", None, None)
-            if self.names is None:
+            names = xkb.Keymap.keymap_new_from_names(self.xkb_context, "default", None, "us", None, None)
+            if names is None:
               log.error(f"Failed to setup xkbcommon: keymap_new_from_names returned NULL")
               self.xkb_context = None
               self.xkb_keymap = None
               self.xkb_state = None
               return
-            self.keymap_str = self.xkb_keymap.get_as_string(self.names, xkb.KEYMAP_FORMAT_TEXT_V1)
-            self.xkb_keymap = self.xkb_context.keymap_from_string(self.keymap_str, xkb.KEYMAP_FORMAT_TEXT_V1, xkb.KEYMAP_COMPILE_NO_FLAGS)
-            self.xkb_state = self.xkb_context.state_new(self.xkb_keymap)
+            self.xkb_keymap = xkb.Keymap.from_string(self.xkb_context, xkb.Keymap.get_as_string(names, xkb.KEYMAP_FORMAT_TEXT_V1), xkb.KEYMAP_FORMAT_TEXT_V1, xkb.KEYMAP_COMPILE_NO_FLAGS)
+            self.xkb_state = xkb.State(self.xkb_keymap)
             self.layout = 0
             log.debug("xkbcommon setup successful")
         except Exception as e:
             log.error(f"Failed to setup xkbcommon: {e}")
             self.xkb_context = None
             self.xkb_keymap = None
-            self.xkb_state = None 
+            self.xkb_state = None
             
     def map_char(self, char: str) -> List[int]:
         if not self.xkb_state or not self.xkb_keymap:
