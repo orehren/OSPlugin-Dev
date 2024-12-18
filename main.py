@@ -45,10 +45,10 @@ from .actions.WriteText.WriteText import WriteText
 sys.path.append(os.path.dirname(__file__))
 
 
-class OSPlugin(PluginBase):
+class OSPlugin_dev(PluginBase):
     def __init__(self):
-        self.PLUGIN_NAME = "OS"
-        self.GITHUB_REPO = "https://github.com/your-github-repo"
+        self.PLUGIN_NAME = "OS_Dev"
+        self.GITHUB_REPO = "https://github.com/orehren/OSPlugin-Dev"
         super().__init__()
         self.ui = None
         self.init_vars()
@@ -252,8 +252,8 @@ class OSPlugin(PluginBase):
         # Register plugin
         self.register(
             plugin_name=self.lm.get("plugin.name"),
-            github_repo="https://github.com/StreamController/OSPlugin",
-            plugin_version="1.0.0",
+            github_repo="https://github.com/orehren/OSPlugin-Dev",
+            plugin_version="1.0.99_dev",
             app_version="1.0.0-alpha"
         )
 

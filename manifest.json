@@ -1,19 +1,19 @@
 {
     "version": "1.0.0",
     "thumbnail": "store/Thumbnail.png",
-    "id": "com_core447_OSPlugin",
-    "name": "OS",
+    "id": "scientificpsycho_OSPlugin_dev",
+    "name": "OS_dev",
     "descriptions": {
-        "en_US": "Control your operating system."
+        "en_US": "Control your operating system (developement version)."
     },
     "short-descriptions": {
-        "en_US": "Control your OS"
+        "en_US": "Control your OS (developement version)"
     },
     "tags": ["Utility"],
-    "minimum-app-version": "1.0.0",
+    "minimum-app-version": "1.0.99_dev",
     "app-version": "1.4.11-beta",
 
     
-    "description": "Control your operating system.",
-    "short-description": "Control your OS"
+    "description": "Control your operating system (developement version).",
+    "short-description": "Control your OS (developement version)"
 }
