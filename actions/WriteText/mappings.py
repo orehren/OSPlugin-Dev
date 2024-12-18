@@ -38,8 +38,8 @@ class KeyMapper:
         utf32_char = ord(char)
             
         found_keycodes = []
-        for keycode in self.xkb_keymap:
-          if self.xkb_keymap.key_get_utf32(keycode) == utf32_char:
+        for keycode in self.xkb_state:
+          if self.xkb_state.key_get_utf32(keycode) == utf32_char:
             found_keycodes.append(keycode)
         
         if not found_keycodes:
