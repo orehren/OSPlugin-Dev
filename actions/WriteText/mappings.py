@@ -55,7 +55,7 @@ class KeyMapper:
                  continue
                 
             for symbol in symbols:
-                if xkb.keysym_to_utf32(symbol) == utf32_char:
+                if xkb_state.keysym_to_utf32(symbol) == utf32_char:
                   found_keycodes.append(keycode)
                   break
             
