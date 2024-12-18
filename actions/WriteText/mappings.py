@@ -27,7 +27,7 @@ class KeyMapper:
               self.xkb_keymap = None
               self.xkb_state = None
               return
-
+log.debug(f"Attributes of names: {dir(xkb.Keymap)}")
             self.xkb_keymap = xkb.Keymap.from_string(self.xkb_context, xkb.Keymap.get_as_string(names, xkb.KEYMAP_FORMAT_TEXT_V1), xkb.KEYMAP_FORMAT_TEXT_V1, xkb.KEYMAP_COMPILE_NO_FLAGS)
             self.xkb_state = xkb.State(self.xkb_keymap)
             log.debug(f"State Layout Attribute: {dir(self.xkb_state.layout_index_get)}")            
