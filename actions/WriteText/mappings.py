@@ -30,7 +30,7 @@ class KeyMapper:
               return
             keymap_str = xkb.Keymap.get_as_string(names)
             self.xkb_keymap = self.xkb_context.keymap_new_from_string(keymap_str, xkb.XKB_COMPOSE_FORMAT_TEXT_V1)
-            self.xkb_state = self.xkb_context.state_new(self.xkb_keymap)
+            self.xkb_state = self.xkb_keymap.state_new()
             self.layout = 0
             log.debug("xkbcommon setup successful")
         except Exception as e:
