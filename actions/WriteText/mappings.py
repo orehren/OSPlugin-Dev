@@ -27,7 +27,7 @@ class KeyMapper:
               self.xkb_keymap = None
               self.xkb_state = None
               return
-            keymap_str = xkb.Keymap.get_as_string(names, xkb.KEYMAP_FORMAT_TEXT_V1)
+            keymap_str = self.xkb_keymap.get_as_string(names, xkb.KEYMAP_FORMAT_TEXT_V1)
             self.xkb_keymap = self.xkb_context.keymap_from_string(keymap_str, xkb.KEYMAP_FORMAT_TEXT_V1, xkb.KEYMAP_COMPILE_NO_FLAGS)
             self.xkb_state = self.xkb_context.state_new(self.xkb_keymap)
             self.layout = 0
